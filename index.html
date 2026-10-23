@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Natalie Bandy — Writing & Storytelling</title>
+<style>
+:root {
+  --site-primary: #30483E;
+  --site-on-primary: #FFFFFF;
+  --site-secondary: #E8E5DC;
+  --site-on-secondary: #26372F;
+  --site-background: #F8F7F3;
+  --site-on-background: #252823;
+  --site-font-body: 'Aptos', 'Segoe UI', sans-serif;
+  --site-font-heading: Georgia, 'Times New Roman', serif;
+  --site-heading-scale: 1;
+  --site-spacing-scale: 1;
+  --site-radius-scale: 1;
+  --site-decoration-opacity: 1;
+  color-scheme: light dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: var(--site-font-body); background: light-dark(#F8F7F3, #191D1A); color: light-dark(#252823, #ECEDE8); line-height: 1.65; }
+#site-root { min-height: 100vh; width: 100%; border-radius: 0; background-color: var(--site-background); color: var(--site-on-background); }
+a { color: inherit; }
+.topbar { display: flex; align-items: center; justify-content: space-between; gap: 1.25rem; padding: calc(1.4rem * var(--site-spacing-scale)) clamp(1.2rem, 5vw, 5rem); border-bottom: 1px solid color-mix(in srgb, var(--site-on-background) 14%, transparent); }
+.brand { font-family: var(--site-font-heading); font-size: calc(1.25rem * var(--site-heading-scale)); text-decoration: none; letter-spacing: -.02em; }
+.nav { display: flex; gap: clamp(.7rem, 2vw, 1.8rem); flex-wrap: wrap; justify-content: flex-end; }
+.nav a { text-decoration: none; font-size: .88rem; opacity: .82; }
+.nav a:hover, .text-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+.hero { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(2rem, 6vw, 6rem); align-items: center; padding: clamp(4rem, 9vw, 8rem) clamp(1.2rem, 10vw, 9rem); background: var(--site-secondary); color: var(--site-on-secondary); }
+.kicker { text-transform: uppercase; letter-spacing: .16em; font-size: .72rem; font-weight: 700; margin: 0 0 1.2rem; }
+h1, h2, h3 { font-family: var(--site-font-heading); font-weight: 400; line-height: 1.1; letter-spacing: -.035em; }
+h1 { font-size: clamp(3.1rem, 7vw, 6.6rem); margin: 0; }
+.hero-subtitle { font-family: var(--site-font-heading); font-size: clamp(1.25rem, 2vw, 1.7rem); line-height: 1.45; max-width: 38rem; margin: 1.5rem 0 1.2rem; }
+.hero-copy { max-width: 38rem; font-size: 1rem; }
+.actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.7rem; }
+.button { display: inline-block; border: 1px solid var(--site-primary); background: var(--site-primary); color: var(--site-on-primary); text-decoration: none; padding: .8rem 1.15rem; border-radius: calc(2px * var(--site-radius-scale)); font-size: .9rem; }
+.button.secondary { background: transparent; color: var(--site-on-secondary); }
+.art { min-height: 360px; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #D2D5C8; color: #30483E; }
+.art::before { content: ''; position: absolute; width: 70%; aspect-ratio: 1; border: 1px solid rgba(48,72,62,.35); border-radius: 50%; }
+.art::after { content: ''; position: absolute; width: 50%; aspect-ratio: 1; border: 1px solid rgba(48,72,62,.35); border-radius: 50%; }
+.art-note { z-index: 1; text-align: center; font-family: var(--site-font-heading); font-style: italic; font-size: 1.45rem; padding: 2rem; max-width: 19rem; }
+.section { padding: clamp(3.5rem, 7vw, 6rem) clamp(1.2rem, 10vw, 9rem); }
+.section-head { display: flex; align-items: end; justify-content: space-between; gap: 1.5rem; margin-bottom: 2.3rem; }
+.section h2 { font-size: clamp(2.3rem, 4vw, 3.8rem); margin: 0; }
+.muted { opacity: .76; }
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.card { display: flex; flex-direction: column; min-height: 270px; padding: 1.5rem; border: 1px solid color-mix(in srgb, var(--site-on-background) 18%, transparent); background: light-dark(#FCFBF8, #222722); }
+.card .number { font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; opacity: .65; }
+.card h3 { font-size: 1.65rem; margin: 2.2rem 0 .7rem; }
+.card p { margin: 0 0 1.3rem; font-size: .95rem; }
+.card .text-link { margin-top: auto; font-size: .9rem; font-weight: 600; text-decoration: none; }
+.journal { background: var(--site-primary); color: var(--site-on-primary); }
+.journal-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(2rem, 6vw, 6rem); }
+.journal h2 { font-size: clamp(2.4rem, 4.5vw, 4.1rem); }
+.journal-intro { max-width: 30rem; }
+.post-list { border-top: 1px solid rgba(255,255,255,.35); }
+.post { display: flex; justify-content: space-between; align-items: start; gap: 1rem; padding: 1.2rem 0; border-bottom: 1px solid rgba(255,255,255,.35); }
+.post h3 { font-size: 1.45rem; margin: 0 0 .35rem; }
+.post p { margin: 0; opacity: .82; font-size: .9rem; }
+.post button { border: 1px solid rgba(255,255,255,.65); color: inherit; background: transparent; padding: .55rem .8rem; cursor: pointer; white-space: nowrap; font: inherit; font-size: .8rem; }
+.about-grid { display: grid; grid-template-columns: .65fr 1.35fr; gap: clamp(2rem, 6vw, 6rem); }
+.about-mark { min-height: 240px; background: var(--site-secondary); color: var(--site-on-secondary); display: grid; place-items: center; font-family: var(--site-font-heading); font-size: 5rem; }
+.about-copy { max-width: 48rem; }
+.about-copy p { margin-top: 0; }
+.contact { background: var(--site-secondary); color: var(--site-on-secondary); text-align: center; padding: 4rem 1.5rem; }
+.contact h2 { font-size: clamp(2.4rem, 5vw, 4rem); margin: 0 0 1rem; }
+.contact p { max-width: 40rem; margin: 0 auto 1.5rem; }
+.footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; padding: 1.5rem clamp(1.2rem, 5vw, 5rem); font-size: .8rem; opacity: .8; }
+.modal { position: fixed; inset: 0; display: none; place-items: center; padding: 1rem; background: rgba(0,0,0,.55); z-index: 10; }
+.modal.open { display: grid; }
+.modal-box { width: min(100%, 560px); padding: 2rem; background: var(--site-background); color: var(--site-on-background); border: 1px solid color-mix(in srgb, var(--site-on-background) 20%, transparent); }
+.modal-box h2 { margin-top: 0; font-size: 2rem; }
+.modal-box button { cursor: pointer; padding: .65rem .9rem; background: var(--site-primary); color: var(--site-on-primary); border: 0; }
+@media (max-width: 760px) { .topbar { align-items: flex-start; flex-direction: column; } .nav { justify-content: flex-start; } .hero, .journal-grid, .about-grid { grid-template-columns: 1fr; } .hero { padding-top: 3.5rem; } .art { min-height: 230px; } .cards { grid-template-columns: 1fr; } .card { min-height: 210px; } .section-head { align-items: flex-start; flex-direction: column; } }
+</style>
+</head>
+<body>
+<div id="site-root" data-sites-preview-theme="custom">
+  <header class="topbar">
+    <a class="brand" href="#home">Natalie Bandy</a>
+    <nav class="nav" aria-label="Main navigation"><a href="#work">Selected Work</a><a href="#journal">Journal</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+  </header>
+  <main>
+    <section class="hero" id="home">
+      <div>
+        <p class="kicker">Writing · Storytelling · Communications</p>
+        <h1>Stories about people, places & becoming.</h1>
+        <p class="hero-subtitle">A home for my work, my words, and the things I’m learning along the way.</p>
+        <p class="hero-copy">I’m a Charleston-based communications professional with a background in local journalism, public service, and digital content. I write about people and communities, alongside personal explorations of running, yoga, and growth.</p>
+        <div class="actions"><a class="button" href="#work">Explore my writing</a><a class="button secondary" href="#about">A little about me</a></div>
+      </div>
+      <div class="art" aria-label="Abstract editorial artwork"><div class="art-note">“Pay attention. There are stories everywhere.”</div></div>
+    </section>
+    <section class="section" id="work">
+      <div class="section-head"><div><p class="kicker">A few places to start</p><h2>Selected work</h2></div><p class="muted">A growing collection of reporting, essays, and creative work.</p></div>
+      <div class="cards">
+        <article class="card"><span class="number">01 / Journalism</span><h3>Published Journalism</h3><p>Reporting, interviews, and stories from my college newsroom. Add links to your strongest published articles here.</p><a class="text-link" href="#contact" data-placeholder="Add links to your published college journalism articles here.">Add article links ↗</a></article>
+        <article class="card"><span class="number">02 / Personal essays</span><h3>Running & Yoga</h3><p>Personal writing about training, practice, uncertainty, discipline, and the lessons that emerge along the way.</p><a class="text-link" href="#journal">Explore the journal ↓</a></article>
+        <article class="card"><span class="number">03 / Communications</span><h3>Digital & Brand Content</h3><p>A selection of social content and communications projects, with context about the audience and my role.</p><a class="text-link" href="#contact" data-placeholder="Add approved social media and communications samples here.">Add content samples ↗</a></article>
+      </div>
+    </section>
+    <section class="section journal" id="journal">
+      <div class="journal-grid">
+        <div class="journal-intro"><p class="kicker">Notes from the journey</p><h2>The personal side of the story.</h2><p>Writing in progress, lessons from the miles and the mat, and reflections on finding a little more perspective. This is where new essays can live as they take shape.</p></div>
+        <div class="post-list">
+          <article class="post"><div><h3>What Running Is Teaching Me</h3><p>Personal essay · Placeholder for your own piece</p></div><button type="button" data-post="running">Preview idea</button></article>
+          <article class="post"><div><h3>Learning to Stay With the Practice</h3><p>Personal essay · Placeholder for your own piece</p></div><button type="button" data-post="yoga">Preview idea</button></article>
+          <article class="post"><div><h3>Finding a Story in the Everyday</h3><p>Writing note · Placeholder for your own piece</p></div><button type="button" data-post="story">Preview idea</button></article>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="about">
+      <div class="about-grid"><div class="about-mark" aria-hidden="true">NB</div><div class="about-copy"><p class="kicker">A little about me</p><h2>Curious by nature. A writer at heart.</h2><p>I’m a creative communications professional with experience in journalism, storytelling, digital content, and public service. My work has taught me to communicate clearly, pay attention to detail, and recognize the value of a well-told story.</p><p>Outside of work, I spend time running, practicing yoga, and exploring how those experiences shape the way I think and write. This site brings those interests together with my professional work in one evolving portfolio.</p><p class="muted"><em>Feel free to edit this section so it sounds unmistakably like you.</em></p></div></div>
+    </section>
+    <section class="contact" id="contact"><p class="kicker">Get in touch</p><h2>Have a story in mind?</h2><p>I’m always interested in thoughtful conversations, creative projects, and opportunities to tell stories well.</p><a class="button" href="#home" id="contact-button">Add your contact details</a><p class="muted" style="font-size:.8rem;margin-top:1rem">Replace this button with your professional email and LinkedIn links before sharing the site.</p></section>
+  </main>
+  <footer class="footer"><span>© <span id="year"></span> Natalie Bandy</span><span>Writing · Storytelling · A work in progress</span></footer>
+</div>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-box"><p class="kicker">Journal idea</p><h2 id="modal-title"></h2><p id="modal-text"></p><p class="muted">This is a prompt for your own writing, not a published article.</p><button type="button" id="close-modal">Close</button></div></div>
+<script>
+const ideas = {
+ running: { title: 'What Running Is Teaching Me', text: 'Possible starting point: write about one specific moment from training—a difficult run, a small breakthrough, or a day you nearly gave up. Begin with the scene, then explore what it made you notice. Keep the details and conclusions true to your own experience.' },
+ yoga: { title: 'Learning to Stay With the Practice', text: 'Possible starting point: describe a moment in practice when something felt difficult or unfamiliar. What did you notice in your body or mind? Let the story unfold through concrete details rather than trying to force a lesson.' },
+ story: { title: 'Finding a Story in the Everyday', text: 'Possible starting point: choose an ordinary moment in Charleston—a conversation, a place, or someone doing meaningful work. What made you pause? Consider what you would want to ask, observe, or understand more deeply.' }
+};
+document.getElementById('year').textContent = new Date().getFullYear();
+const modal = document.getElementById('modal');
+document.querySelectorAll('[data-post]').forEach(button => button.addEventListener('click', () => { const idea = ideas[button.dataset.post]; document.getElementById('modal-title').textContent = idea.title; document.getElementById('modal-text').textContent = idea.text; modal.classList.add('open'); }));
+document.getElementById('close-modal').addEventListener('click', () => modal.classList.remove('open'));
+modal.addEventListener('click', event => { if (event.target === modal) modal.classList.remove('open'); });
+document.querySelectorAll('[data-placeholder]').forEach(link => link.addEventListener('click', event => { event.preventDefault(); document.getElementById('modal-title').textContent = 'Your portfolio checklist'; document.getElementById('modal-text').textContent = link.dataset.placeholder; modal.classList.add('open'); }));
+document.getElementById('contact-button').addEventListener('click', event => { event.preventDefault(); document.getElementById('modal-title').textContent = 'Add your contact details'; document.getElementById('modal-text').textContent = 'Before publishing, replace this button with a mailto link to your professional email and add your LinkedIn profile URL.'; modal.classList.add('open'); });
+</script>
+</body>
+</html>
